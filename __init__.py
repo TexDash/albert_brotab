@@ -148,8 +148,7 @@ class BrotabClient:
                 if icon in [None, "requested_but_unavailable"]:
                     icon = "xdg:browser"
 
-            title_prefix = 'Ⓑ '
-            new_title = title_prefix + title + title_suffix
+            new_title = title + title_suffix
 
             # avoid icon cache in albert
             temp_state_str = "__temp_state_flag__" if temp_state_flag else ""
