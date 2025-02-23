@@ -7,7 +7,6 @@ from albert import *
 import os
 import tld
 import requests
-import shutil
 import filetype
 from io import BytesIO
 from concurrent.futures import ThreadPoolExecutor
@@ -21,6 +20,7 @@ from string import ascii_lowercase
 from brotab.inout import is_port_accepting_connections
 from brotab.inout import get_mediator_ports
 from brotab.api import SingleMediatorAPI
+from brotab.utils import which
 
 from asyncio import new_event_loop, set_event_loop
 from memoization import cached
@@ -33,7 +33,7 @@ md_name = "Brotab"
 md_description = "Control browser tabs"
 md_license = "BSD-3"
 md_url = "https://github.com/TexDash/albert_brotab"
-md_bin_dependencies = ["brotab"]
+
 
 class BrotabClient:
     """ Client to interact with Brotab Command line tool """
@@ -86,8 +86,8 @@ class BrotabClient:
     @cached(ttl=10)
     def is_installed(self):
         """ Checks if Brotab is installed """
-        path = shutil.which('brotab')
-        if path is None:
+        brotab_path = which('brotab')
+        if brotab_path is None:
             return False
         return True
 
