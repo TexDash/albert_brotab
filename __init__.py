@@ -315,7 +315,7 @@ class Plugin(PluginInstance, GlobalQueryHandler):
                 item=StandardItem(
                     id=tab['albert_id'],
                     text= tab['title'],
-                    subtext=tab['url'],
+                    subtext= "🌐 " + tab['url'],
                     inputActionText=tab['title'],
                     iconUrls=[tab['icon_url']],
                     actions=[
